@@ -31,7 +31,10 @@ pipeline {
                   expression {
 
                           env.BRANCH_NAME != 'master'
-			echo -s " we are when expression "
+			sh 'env > env.txt' 
+			for (String i : readFile('env.txt').split("\r?\n")) {
+   				 println i
+			}	
 
                   }
 
