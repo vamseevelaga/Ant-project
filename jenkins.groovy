@@ -18,7 +18,8 @@ pipeline {
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
                 checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinskey', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
-	
+		sh 'git branch -a > branches'
+		sh 'cat branches'	
                         }
 
             }
