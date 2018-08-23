@@ -26,6 +26,9 @@ pipeline {
 
             steps {
 
+			sh 'git branch -a > branches'
+                sh 'cat branches'
+
                         parallel(
 
                         "Daily VMware Release ${data.get(1)}": {
