@@ -17,7 +17,7 @@ pipeline {
                 //sh 'sudo chown -R ${USER}:${USER} .'
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
-                checkout([$class: 'GitSCM',  branches: [[name: "*/Ant-project/*"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinskey', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
+              #  checkout([$class: 'GitSCM',  branches: [[name: "*/Ant-project/*"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinskey', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
 		sh 'git branch -a > branches'
 		sh 'cat branches'	
                         }
