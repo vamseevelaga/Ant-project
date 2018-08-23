@@ -14,7 +14,7 @@ pipeline {
         stage('Check out code') {
             steps {
                 echo 'Initial cleanup and checkout...'
-                sh 'sudo chown -R ${USER}:${USER} .'
+                //sh 'sudo chown -R ${USER}:${USER} .'
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
                 checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'krishna', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
