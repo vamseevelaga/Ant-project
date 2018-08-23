@@ -31,7 +31,7 @@ pipeline {
                   expression {
 
                           env.BRANCH_NAME != 'master'
-
+			echo -s " we are when expression "
 
                   }
 
