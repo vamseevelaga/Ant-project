@@ -19,8 +19,8 @@ pipeline {
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
                 checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'krishna', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
-
-		sh 'env > env.txt'
+                 println $release_version
+		              sh 'env > env.txt'
                         for (String i : readFile('env.txt').split("\r?\n")) {
                                  println i
                         }
@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        
+
         stage('Trigger all daily testing') {
 
 
@@ -37,10 +37,10 @@ pipeline {
                   expression {
 
                           env.BRANCH_NAME = 'master'
-			sh 'env > env.txt' 
+			sh 'env > env.txt'
 			for (String i : readFile('env.txt').split("\r?\n")) {
    				 println i
-			}	
+			}
 
                   }
 
