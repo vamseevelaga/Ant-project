@@ -17,8 +17,8 @@ pipeline {
                 //sh 'sudo chown -R ${USER}:${USER} .'
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
-                checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'krishna', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
-		
+                checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkinskey', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
+	
                         }
 
             }
@@ -33,12 +33,6 @@ pipeline {
 
                 script {
 
-                List<String> sourceChanged = sh(returnStdout: true, script: "git diff --name-only origin/master..origin/${env.BRANCH_NAME}").split()
-                    def isSourceChanged = false
-                  // buildstatusfile is the file which maintains the changes of the build, if it is modified the pipeline will be executed.
-                for (int i = 0; i < sourceChanged.size(); i++) {
-                          if (sourceChanged[i].contains("buildstatusfile")) {
-                          isSourceChanged=true
 
 
                         parallel(
