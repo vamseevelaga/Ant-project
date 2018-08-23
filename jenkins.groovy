@@ -18,13 +18,7 @@ pipeline {
                 deleteDir()
                 echo "Checkout ${GERRIT_REFSPEC} code..."
                 checkout([$class: 'GitSCM',  branches: [[name: "*/${GERRIT_REFSPEC}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'krishna', url: 'git@github.com:vamseevelaga/Ant-project.git']]])
-                 
 		
-        	def release_version = ${GERRIT_REFSPEC}.split('/')
-		println $release_version
-		              sh 'env > env.txt'
-                        for (String i : readFile('env.txt').split("\r?\n")) {
-                                 println i
                         }
 
             }
