@@ -29,23 +29,6 @@ pipeline {
 			sh 'git branch -a > branches'
                 sh 'cat branches'
 
-                        parallel(
-
-                        "Daily VMware Release ${data.get(1)}": {
-                            build job: "vmware-${data.get(0)}-${data.get(1)}"
-                        },
-                        "Daily VMware HA Release ${data.get(1)}": {
-                            build job: "daily-vmware-ha-${data.get(0)}-${data.get(1)}"
-                        },
-                        "E2C Deploy Release ${data.get(1)}": {
-                            build job: "daily-e2c-deploy-${data.get(0)}-${data.get(1)}"
-                        },
-                        "E2C Upgrade Release ${data.get(1)}": {
-                            build job: "daily-e2c-upgrade-${data.get(0)}-${data.get}(1)"
-                        }
-                )
-
-                }
 
 
         }
