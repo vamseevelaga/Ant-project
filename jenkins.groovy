@@ -47,13 +47,7 @@ pipeline {
 
                 }
 
-                if (isSourceChanged ) {
-                            error("Source files changed but CHANGELOG was not updated!")
-                        }
 
-                    }
-
-            }
         }
         stage('Promote RC to artifactory') {
             steps {
