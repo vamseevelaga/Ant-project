@@ -27,20 +27,6 @@ pipeline {
         stage('Trigger all daily testing') {
 
 
-            when{
-
-                  expression {
-
-                          env.BRANCH_NAME = 'master'
-			sh 'env > env.txt'
-			for (String i : readFile('env.txt').split("\r?\n")) {
-   				 println i
-			}
-
-                  }
-
-            }
-
             steps {
 
 
