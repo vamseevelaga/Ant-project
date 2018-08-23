@@ -22,7 +22,6 @@ pipeline {
                         }
 
             }
-        }
 
 
         stage('Trigger all daily testing') {
