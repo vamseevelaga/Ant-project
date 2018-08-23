@@ -29,12 +29,6 @@ pipeline {
 
             steps {
 
-
-
-                script {
-
-
-
                         parallel(
 
                         "Daily VMware Release ${data.get(1)}": {
@@ -51,7 +45,6 @@ pipeline {
                         }
                 )
 
-                }
                 }
 
                 if (isSourceChanged ) {
