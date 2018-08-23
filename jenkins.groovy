@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-
+stages{
         stage('Trigger all daily testing') {
 
 
@@ -21,4 +21,5 @@ pipeline {
             archiveArtifacts 'artifact.properties'
         }
     }
+}
 }
