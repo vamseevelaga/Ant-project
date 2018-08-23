@@ -14,9 +14,6 @@ pipeline {
         stage('Check out code') {
             steps {
                 echo 'Initial cleanup and checkout...'
-                //sh 'sudo chown -R ${USER}:${USER} .'
-                deleteDir()
-                echo "Checkout ${GERRIT_REFSPEC} code..."
 		sh 'git branch -a > branches'
 		sh 'cat branches'	
                         }
