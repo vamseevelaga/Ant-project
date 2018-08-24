@@ -16,7 +16,7 @@ pipeline {
                 parallel(
                         'Daily VMware Release 1.1.x': {
 			sh("git checkout remotes/origin/ant-rel1")
-		    	sh(" git log --since=1.days > change; if [ -s change ]; then export $commit=false;fi;echo $commit; export $commit")
+		    	sh(" git log --since=1.days > change; if [ -s change ]; then export commit=false;fi;echo $commit; export $commit")
 		println "the commit value $commit"
 			
                             build job: 'vmware-rel-1.1.x'
