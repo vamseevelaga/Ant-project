@@ -19,6 +19,7 @@ pipeline {
 		    	sh("git log --since=1.days > change")
 			sh("if [ -n change ]; then commit=false; rm -f change; else touch changed; fi")
 		println "the commit value $commit"
+		step{
 
 		def status = fileExists 'changed'
 			if (status)
@@ -31,6 +32,7 @@ pipeline {
 }
                             build job: 'vmware-rel-1.1.x'
                         }
+}
                 )
             }
         }
