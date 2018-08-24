@@ -16,8 +16,8 @@ pipeline {
                         'Daily VMware Release 1.1.x': {
 			sh("git checkout remotes/origin/ant-rel1")
 		    	sh(" git log --since=1.days > change; if [ -s change ]; then export commit=false; else export commit=true; fi")
-			echo ${commit}
-			if ( ${commit} )
+			echo "${commit}"
+			if ( "${commit}" )
 {
                             build job: 'vmware-rel-1.1.x'
 				}
