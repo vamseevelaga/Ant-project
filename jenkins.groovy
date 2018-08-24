@@ -19,7 +19,8 @@ pipeline {
 		    	sh("git log --since=1.days > change")
 			sh("if [ -n change ]; then commit=false; export commit; fi")
 		println "the commit value $commit"
-			
+		File file = new File("change")
+		println "file has ${file.length()}"	
                             build job: 'vmware-rel-1.1.x'
                         }
                 )
