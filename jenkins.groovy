@@ -8,6 +8,7 @@ pipeline {
     environment {
         REPO_DIR = "$WORKSPACE"
         CICD_DIR = "cicd"
+	commit="true"
     }
     stages {
         stage('Trigger all daily testing') {
@@ -15,7 +16,7 @@ pipeline {
                 parallel(
                         'Daily VMware Release 1.1.x': {
 			sh("git checkout remotes/origin/ant-rel1")
-		    	sh(" git log --since=1.days > change; if [ -s change ]; then export commit=false; else export commit=true; fi")
+		    	sh(" git log --since=1.days > change; if [ -s change ]; then export $commit=false;fi")
 			echo "${commit}"
 		def commit = System.getenv('commit')
 		println "the commit value $commit"
