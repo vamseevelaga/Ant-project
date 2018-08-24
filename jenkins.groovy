@@ -19,14 +19,7 @@ pipeline {
 		    	sh(" git log --since=1.days > change; if [ -s change ]; then export $commit=false;fi")
 			echo "${commit}"
 		println "the commit value $commit"
-			if ( $commit )
-{
                             build job: 'vmware-rel-1.1.x'
-				}
-			else
-			{
-			echo "No changes to build"	
-			}
                         }
                 )
             }
