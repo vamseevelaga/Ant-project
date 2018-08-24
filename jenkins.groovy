@@ -15,8 +15,12 @@ pipeline {
                 parallel(
                         'Daily VMware Release 1.1.x': {
 			sh("git checkout remotes/origin/ant-rel1")
-		    	def commit = sh(returnStdout: true, script: "git log --since=1.days").trim()
-			if ( commit){
+		    	sh("git log --since=1.days > change; if [ -s change ]; then
+				export commit=false
+				else
+				export commit=true
+				fi")
+			if ( $commit){
                             build job: 'vmware-rel-1.1.x'
 				}
 			else
