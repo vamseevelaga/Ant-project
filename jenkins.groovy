@@ -8,7 +8,7 @@ pipeline {
     environment {
         REPO_DIR = "$WORKSPACE"
         CICD_DIR = "cicd"
-	commit="true"
+	commit = "true"
     }
     stages {
         stage('Trigger all daily testing') {
@@ -18,9 +18,8 @@ pipeline {
 			sh("git checkout remotes/origin/ant-rel1")
 		    	sh(" git log --since=1.days > change; if [ -s change ]; then export $commit=false;fi")
 			echo "${commit}"
-		def commit = System.getenv('commit')
 		println "the commit value $commit"
-			if ( "${commit}" )
+			if ( $commit )
 {
                             build job: 'vmware-rel-1.1.x'
 				}
